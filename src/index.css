@@ -1,0 +1,165 @@
+/* ============================================
+   FUEGO ARCADE - SISTEMA DE DISEÑO CYBERPUNK
+   ============================================ */
+
+:root {
+  /* Paleta principal */
+  --neon-cyan: #00fff7;
+  --neon-magenta: #ff00e5;
+  --neon-purple: #9d4edd;
+  --neon-green: #39ff14;
+  --neon-yellow: #ffea00;
+  --neon-red: #ff2a6d;
+  --neon-blue: #05d9e8;
+
+  /* Fondos */
+  --bg-deep: #05010d;
+  --bg-primary: #0a0416;
+  --bg-secondary: #120a24;
+  --bg-card: rgba(20, 12, 40, 0.6);
+  --bg-glass: rgba(10, 4, 22, 0.75);
+
+  /* Texto */
+  --text-primary: #f0e9ff;
+  --text-secondary: #a89cc8;
+  --text-muted: #6b5f8f;
+
+  /* Bordes y efectos */
+  --border-glow: rgba(0, 255, 247, 0.3);
+  --border-subtle: rgba(157, 78, 221, 0.25);
+
+  /* Gradientes */
+  --grad-primary: linear-gradient(135deg, #00fff7 0%, #ff00e5 100%);
+  --grad-secondary: linear-gradient(135deg, #9d4edd 0%, #05d9e8 100%);
+  --grad-fire: linear-gradient(135deg, #ff2a6d 0%, #ffea00 100%);
+
+  /* Sombras neón */
+  --glow-cyan: 0 0 20px rgba(0, 255, 247, 0.5), 0 0 40px rgba(0, 255, 247, 0.2);
+  --glow-magenta: 0 0 20px rgba(255, 0, 229, 0.5), 0 0 40px rgba(255, 0, 229, 0.2);
+  --glow-purple: 0 0 20px rgba(157, 78, 221, 0.5), 0 0 40px rgba(157, 78, 221, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Fondo animado tipo Matrix */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(157, 78, 221, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 255, 247, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 0, 229, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grid matrix animado */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 247, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 247, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+  animation: gridScroll 20s linear infinite;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+@keyframes gridScroll {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 50px 50px, 50px 50px; }
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Tipografía */
+h1, h2, h3, h4 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Scrollbar futurista */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  border-left: 1px solid var(--border-subtle);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--grad-primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+/* Selección */
+::selection {
+  background: var(--neon-magenta);
+  color: var(--bg-deep);
+}
+
+/* Botones base */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* Efecto scanline global */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 255, 247, 0.02) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanlineMove 8s linear infinite;
+}
+
+@keyframes scanlineMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(4px); }
+}

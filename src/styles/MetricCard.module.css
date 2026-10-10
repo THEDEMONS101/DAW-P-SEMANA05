@@ -1,0 +1,133 @@
+.card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20, 12, 40, 0.85) 0%, rgba(10, 4, 22, 0.9) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 22px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.cardGlow {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.15;
+  filter: blur(60px);
+  transition: all 0.5s;
+  pointer-events: none;
+}
+
+.card:hover .cardGlow { opacity: 0.35; }
+
+.cornerTL, .cornerBR {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  opacity: 0.4;
+  transition: all 0.3s;
+}
+
+.cornerTL {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cornerBR {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+.card:hover .cornerTL,
+.card:hover .cornerBR {
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: currentColor;
+  box-shadow: 0 0 30px rgba(0, 255, 247, 0.15), 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cardLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+}
+
+.cardTitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+}
+
+.cardValue {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 12px;
+  text-shadow: 0 0 20px currentColor;
+}
+
+.cardChange {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.trendIcon { font-size: 0.7rem; }
+
+.up { color: var(--neon-green); }
+.down { color: var(--neon-red); }
+
+.cardBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.card:hover .cardBar { transform: scaleX(1); }
+
+/* Acentos de color */
+.cyan { color: var(--neon-cyan); }
+.magenta { color: var(--neon-magenta); }
+.green { color: var(--neon-green); }
+.yellow { color: var(--neon-yellow); }

@@ -1,0 +1,238 @@
+.container {
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--neon-magenta);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20, 12, 40, 0.85) 0%, rgba(10, 4, 22, 0.9) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.cardGlow {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.12;
+  filter: blur(70px);
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.card:hover .cardGlow { opacity: 0.28; }
+
+.cornerTL, .cornerBR {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  opacity: 0.4;
+  transition: all 0.3s;
+}
+
+.cornerTL {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cornerBR {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+.card:hover .cornerTL,
+.card:hover .cornerBR {
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: currentColor;
+  box-shadow: 0 0 30px currentColor, 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Colores por acento */
+.cyan { color: var(--neon-cyan); }
+.magenta { color: var(--neon-magenta); }
+.purple { color: var(--neon-purple); }
+
+.cyan:hover { box-shadow: 0 0 30px rgba(0, 255, 247, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4); }
+.magenta:hover { box-shadow: 0 0 30px rgba(255, 0, 229, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4); }
+.purple:hover { box-shadow: 0 0 30px rgba(157, 78, 221, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4); }
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cardTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cardIndex {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: currentColor;
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.cardTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid currentColor;
+}
+
+.badgeActive {
+  background: rgba(57, 255, 20, 0.1);
+  color: var(--neon-green);
+  border-color: rgba(57, 255, 20, 0.4);
+}
+
+.badgeConcept {
+  background: rgba(255, 234, 0, 0.1);
+  color: var(--neon-yellow);
+  border-color: rgba(255, 234, 0, 0.4);
+}
+
+.badgeDynamic {
+  background: rgba(157, 78, 221, 0.1);
+  color: var(--neon-purple);
+  border-color: rgba(157, 78, 221, 0.4);
+}
+
+.cardText {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.codeBlock {
+  background: rgba(5, 1, 13, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  overflow-x: auto;
+  line-height: 1.6;
+  position: relative;
+}
+
+.codeBlock::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: currentColor;
+  border-radius: 10px 0 0 10px;
+}
+
+.codeBlock code {
+  display: block;
+  white-space: pre;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.benefits span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.benefitOk { color: var(--neon-green); }
+.benefitWarn { color: var(--neon-yellow); }
+.benefitBad { color: var(--neon-red); }

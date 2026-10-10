@@ -1,0 +1,212 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: rgba(10, 4, 22, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 30px rgba(0, 255, 247, 0.1), inset 0 -1px 0 rgba(0, 255, 247, 0.2);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+}
+
+.logoIconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 12px var(--neon-cyan));
+}
+
+.logoPulse {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 247, 0.3) 0%, transparent 70%);
+  animation: logoPulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 0; }
+}
+
+.logoTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  text-shadow: 0 0 10px rgba(0, 255, 247, 0.5);
+  margin: 0;
+}
+
+.logoAccent {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 6px;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 229, 0.6));
+}
+
+.logoSubtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--neon-cyan);
+  letter-spacing: 0.15em;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+/* Navegación */
+.nav {
+  display: flex;
+  gap: 6px;
+  background: rgba(20, 12, 40, 0.5);
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+}
+
+.navButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: transparent;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.navButton:hover {
+  color: var(--neon-cyan);
+  background: rgba(0, 255, 247, 0.05);
+}
+
+.navButton:hover .navIcon {
+  filter: drop-shadow(0 0 8px var(--neon-cyan));
+  transform: scale(1.15);
+}
+
+.navButton.active {
+  color: var(--bg-deep);
+  background: var(--grad-primary);
+  box-shadow: var(--glow-cyan);
+}
+
+.navButton.active .navIcon { filter: none; }
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.navLabel {
+  position: relative;
+  z-index: 1;
+}
+
+.navGlow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: navShine 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes navShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(20, 12, 40, 0.5);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+.statDotGreen {
+  background: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.statValue {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+.statLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  margin-top: 2px;
+}
+
+.statDivider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-subtle);
+}
+
+@media (max-width: 900px) {
+  .nav { order: 3; width: 100%; justify-content: center; }
+  .stats { display: none; }
+}
